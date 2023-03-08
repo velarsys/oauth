@@ -1,0 +1,7 @@
+{
+  "realm": "realm1",
+  "auth-server-url": "http://localhost:8080/auth",
+  "ssl-required": "external",
+  "resource": "client2",
+  "public-client": true
+}

@@ -1,0 +1,5 @@
+{
+    "clientId": "client1",
+    "enabled": true,
+    "bearerOnly": true
+}
