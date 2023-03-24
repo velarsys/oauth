@@ -59,7 +59,15 @@ app.get('/service/public', function (req, res) {
 });
 
 app.get('/service/secured', keycloak.protect('client2:user'), function (req, res) {
-  res.json({message: 'secured'});
+    // Get user name from keycloak: https://stackoverflow.com/questions/35522154/get-username-from-keycloak-session-in-nodejs
+    console.log("Access token content: "+JSON.stringify(req.kauth.grant.access_token.content));
+    // {"exp":1679657609,"iat":1679657309,"auth_time":1679652835,"jti":"99245e6d-188c-429f-bea9-04dca01081e7","iss":"http://localhost:8080/realms/chat-realm","aud":"account","sub":"270e5106-2065-4f8c-9e19-ed96e7246348","typ":"Bearer","azp":"chat-client","nonce":"c04c0574-74e5-4191-8dfb-e38055956d1c","session_state":"a35fb13a-639e-4fbe-a2f3-8538ec50e793","acr":"0","allowed-origins":["http://localhost:9090"],"realm_access":{"roles":["offline_access","default-roles-chat-realm","uma_authorization"]},"resource_access":{"chat-client":{"roles":["uma_protection"]},"account":{"roles":["manage-account","manage-account-links","view-profile"]}},"scope":"openid email profile","sid":"a35fb13a-639e-4fbe-a2f3-8538ec50e793","email_verified":false,"preferred_username":"user1","given_name":"","family_name":""}
+    console.log("Request user name: "+req.kauth.grant.access_token.content.preferred_username);
+    console.log("Users scope: "+JSON.stringify(req.kauth.grant.access_token.content.scope));
+    // "openid email profile"
+    console.log("Users roles: "+JSON.stringify(req.kauth.grant.access_token.content.resource_access));
+    //{"chat-client":{"roles":["uma_protection"]},"account":{"roles":["manage-account","manage-account-links","view-profile"]}}
+    res.json({message: 'secured'});
 });
 
 // app.get('/service/secured', keycloak.protect('uma_protection'), function (req, res) {

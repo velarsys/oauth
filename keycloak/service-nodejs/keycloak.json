@@ -1,14 +1,13 @@
 {
-  "realm": "realm1",
+  "realm": "chat-realm",
   "auth-server-url": "http://localhost:8080/",
   "ssl-required": "external",
-  "resource": "client2",
+  "resource": "chat-client",
   "verify-token-audience": true,
   "credentials": {
-    "secret": "vL6Hl9FX1K2eZVtC3MXv1AP2tye8snJj"
+    "secret": "3Gg1VO7RkbTuPl88yTdvzibnNTm8qVtY"
   },
   "confidential-port": 0,
-  "policy-enforcer": {},
   "public-client":true,
-  "bearerOnly": false
+  "policy-enforcer": {}
 }
